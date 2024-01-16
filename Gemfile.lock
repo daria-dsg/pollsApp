@@ -77,12 +77,22 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
+    annotate (3.2.0)
+      activerecord (>= 3.2, < 8.0)
+      rake (>= 10.4, < 14.0)
     base64 (0.2.0)
+    better_errors (2.10.1)
+      erubi (>= 1.0.0)
+      rack (>= 0.9.0)
+      rouge (>= 1.0.0)
     bigdecimal (3.1.5)
     bindex (0.8.1)
+    binding_of_caller (1.0.0)
+      debug_inspector (>= 0.0.1)
     bootsnap (1.17.1)
       msgpack (~> 1.2)
     builder (3.2.4)
+    byebug (11.1.3)
     capybara (3.39.2)
       addressable
       matrix
@@ -92,6 +102,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
+    coderay (1.1.3)
     concurrent-ruby (1.2.3)
     connection_pool (2.4.1)
     crass (1.0.6)
@@ -99,6 +110,7 @@ GEM
     debug (1.9.1)
       irb (~> 1.10)
       reline (>= 0.3.8)
+    debug_inspector (1.2.0)
     drb (2.2.0)
       ruby2_keywords
     erubi (1.12.0)
@@ -127,6 +139,7 @@ GEM
       net-smtp
     marcel (1.0.2)
     matrix (0.4.2)
+    method_source (1.0.0)
     mini_mime (1.1.5)
     minitest (5.21.1)
     msgpack (1.7.2)
@@ -141,19 +154,14 @@ GEM
     net-smtp (0.4.0.1)
       net-protocol
     nio4r (2.7.0)
-    nokogiri (1.16.0-aarch64-linux)
-      racc (~> 1.4)
-    nokogiri (1.16.0-arm-linux)
-      racc (~> 1.4)
-    nokogiri (1.16.0-arm64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.16.0-x86-linux)
-      racc (~> 1.4)
-    nokogiri (1.16.0-x86_64-darwin)
-      racc (~> 1.4)
     nokogiri (1.16.0-x86_64-linux)
       racc (~> 1.4)
     pg (1.5.4)
+    pry (0.14.2)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
+    pry-rails (0.3.9)
+      pry (>= 0.10.4)
     psych (5.1.2)
       stringio
     public_suffix (5.0.4)
@@ -204,6 +212,7 @@ GEM
     reline (0.4.2)
       io-console (~> 0.5)
     rexml (3.2.6)
+    rouge (4.2.0)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     selenium-webdriver (4.16.0)
@@ -243,20 +252,20 @@ GEM
     zeitwerk (2.6.12)
 
 PLATFORMS
-  aarch64-linux
-  arm-linux
-  arm64-darwin
-  x86-linux
-  x86_64-darwin
   x86_64-linux
 
 DEPENDENCIES
+  annotate
+  better_errors
+  binding_of_caller
   bootsnap
+  byebug
   capybara
   debug
   importmap-rails
   jbuilder
   pg (~> 1.1)
+  pry-rails
   puma (>= 5.0)
   rails (~> 7.1.2)
   selenium-webdriver
