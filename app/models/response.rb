@@ -1,14 +1,14 @@
 class Response < ApplicationRecord
-  validates :responded_id, presence: true
-  validates :answer_id, presence: true
+  validates :respondent_id, presence: true
+  validates :answer_choice_id, presence: true
 
   belongs_to :answer_choice,
     class_name: 'AnswerChoice',
     primary_key: :id,
-    foreign_key: :answer_id
+    foreign_key: :answer_choice_id
 
   belongs_to :respondent,
-    class_name: 'Response',
+    class_name: 'User',
     primary_key: :id,
-    foreign_key: :responded_id
+    foreign_key: :respondent_id
 end

@@ -9,5 +9,5 @@ class User < ApplicationRecord
   has_many :responses,
     class_name: 'Response',
     primary_key: :id,
-    foreign_key: :responded_id
+    foreign_key: :respondent_id
 end
