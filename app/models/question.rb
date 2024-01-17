@@ -11,4 +11,8 @@ class Question < ApplicationRecord
     class_name: 'Poll',
     primary_key: :id,
     foreign_key: :poll_id
+
+  has_many :reponses,
+    through: :answer_choices,
+    source: :responses
 end
