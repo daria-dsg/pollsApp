@@ -12,7 +12,7 @@ class Question < ApplicationRecord
     primary_key: :id,
     foreign_key: :poll_id
 
-  has_many :reponses,
+  has_many :responses,
     through: :answer_choices,
     source: :responses
 end
