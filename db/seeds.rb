@@ -27,13 +27,12 @@ ActiveRecord::Base.transaction do
   ac2 = AnswerChoice.create!(text: 'Curie', question: q1)
   ac3 = AnswerChoice.create!(text: 'Sally', question: q1)
 
-  r1 = Response.create!(respondent: u2, answer_choice: ac3)
-
   q2 = Question.create!(title: 'Which Toy Is Most Fun?', poll: p1)
   ac4 = AnswerChoice.create!(text: 'String', question: q2)
   ac5 = AnswerChoice.create!(text: 'Ball', question: q2)
   ac6 = AnswerChoice.create!(text: 'Bird', question: q2)
 
+  r1 = Response.create!(respondent: u2, answer_choice: ac3)
   r2 = Response.create!( respondent: u2, answer_choice: ac4)
   r3 = Response.create!( respondent: u3, answer_choice: ac4)
   r4 = Response.create!( respondent: u4, answer_choice: ac5)
