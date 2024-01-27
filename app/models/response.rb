@@ -1,6 +1,7 @@
 class Response < ApplicationRecord
   validates :respondent_id, presence: true
   validates :answer_choice_id, presence: true
+  validate :not_duplicate_response, :respondent_is_not_pull_author
 
   belongs_to :answer_choice,
     class_name: 'AnswerChoice',
@@ -43,5 +44,26 @@ class Response < ApplicationRecord
       WHERE 
         (:id IS NULL) OR (responses.id != :id)
       SQL
+  end
+
+  def respondent_already_answered?
+    sibling_responses.exists?(respondent_id: self.respondent_id)
+  end
+
+  def not_duplicate_response
+    if respondent_already_answered?
+      errors.add(:respondent, 'can not vote twice for the question')
+    end
+  end
+
+  def respondent_is_not_pull_author
+    poll = Poll
+      .joins(questions: :answer_choices)
+      .where('answer_choices.id = ?', self.answer_choice_id)
+      .first
+
+    if self.respondent_id == poll.author_id
+      errors.add(:author, 'can not respond on own poll')
+    end
   end
 end
