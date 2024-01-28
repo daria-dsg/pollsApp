@@ -1,6 +1,5 @@
 class AnswerChoice < ApplicationRecord
   validates :text, presence: true
-  validates :question_id, presence: true
 
   has_many :responses,
     class_name: 'Response',

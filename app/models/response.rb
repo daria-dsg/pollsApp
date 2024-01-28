@@ -1,6 +1,4 @@
 class Response < ApplicationRecord
-  validates :respondent_id, presence: true
-  validates :answer_choice_id, presence: true
   validate :not_duplicate_response, :respondent_is_not_pull_author
 
   belongs_to :answer_choice,

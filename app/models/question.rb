@@ -1,6 +1,5 @@
 class Question < ApplicationRecord
   validates :title, presence: true
-  validates :poll_id, presence: true
 
   has_many :answer_choices,
     class_name: 'AnswerChoice',

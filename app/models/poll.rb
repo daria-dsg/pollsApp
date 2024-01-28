@@ -1,6 +1,5 @@
 class Poll < ApplicationRecord
   validates :title, presence: true
-  validates :author_id, presence: true
 
   has_many :questions,
     class_name: 'Question',
