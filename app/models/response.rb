@@ -1,5 +1,4 @@
 class Response < ApplicationRecord
-  validate :not_duplicate_response, :respondent_is_not_pull_author
 
   belongs_to :answer_choice,
     class_name: 'AnswerChoice',
@@ -14,6 +13,9 @@ class Response < ApplicationRecord
   has_one :question,
     through: :answer_choice,
     source: :question
+
+  validate :not_duplicate_response, unless: -> {answer_choice.nil?}
+  validate :respondent_is_not_pull_author, unless: -> {answer_choice.nil?}
 
   def sibling_responses
     self.question.responses.where.not(id: self.id)
