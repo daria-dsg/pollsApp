@@ -14,4 +14,16 @@ class Question < ApplicationRecord
   has_many :responses,
     through: :answer_choices,
     source: :responses
+
+  def n_plus_one_result
+    answer_choices = self.answer_choices
+
+    answer_choices_responses_count = {}
+
+    answer_choices.each do |answer_choice|
+      answer_choices_responses_count[answer_choice.text] = answer_choice.responses.count
+    end
+
+    answer_choices_responses_count
+  end
 end
